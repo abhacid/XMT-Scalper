@@ -64,7 +64,7 @@
     <None Include="XMT Scalper home page.url" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MqlApiWithStdLib.MQ4\MqlApiWithStdLib.csproj">
+    <ProjectReference Include="..\MqlApiWithStdLib\MqlApiWithStdLib.csproj">
       <Project>{2160b9cc-e46b-4361-93ca-4c8e9a3ff35f}</Project>
       <Name>MqlApiWithStdLib</Name>
     </ProjectReference>

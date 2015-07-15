@@ -28,6 +28,7 @@ Pour compiler le programme avec Visual Studio, il faut au préalable :
   Pour ensuite déboguer le programme avec NQuotes suivez les [instructions](http://www.nquotes.net/expert-creation-tutorial) donnez par son auteur.
 
   # Notes
+  
   a) si metatrader est actif, il y aune erreur lors de la compilation (la copie des dll ne se fait pas) du fait que les dll sont bloquée en accès par metratrader.
   il faut donc fermer metatrader avant de compiler.
 

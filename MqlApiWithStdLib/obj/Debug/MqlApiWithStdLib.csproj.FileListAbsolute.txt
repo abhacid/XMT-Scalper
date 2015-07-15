@@ -6,3 +6,7 @@ C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib.MQ4\bin\Debug\
 C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib.MQ4\bin\Debug\MqlApiWithStdLib.pdb
 C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib.MQ4\obj\Debug\MqlApiWithStdLib.dll
 C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib.MQ4\obj\Debug\MqlApiWithStdLib.pdb
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib\bin\Debug\MqlApiWithStdLib.dll
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib\bin\Debug\MqlApiWithStdLib.pdb
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib\obj\Debug\MqlApiWithStdLib.dll
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib\obj\Debug\MqlApiWithStdLib.pdb
