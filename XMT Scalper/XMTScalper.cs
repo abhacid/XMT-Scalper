@@ -36,7 +36,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace XMT_Scalper
+namespace Robots
 {
     #region Initial Author
     /// <summary>
@@ -72,7 +72,7 @@ namespace XMT_Scalper
 
         [ExternVariable] public string TradingSettings           = "==== Trade settings ====";
         [ExternVariable] public double MaxSpread                 = 30.0;     // Max allowed spread in points (1 / 10 pip)
-        [ExternVariable] public int MaxExecution                = 0;        // Max allowed average execution time in ms (0 means no restrictions)
+        [ExternVariable] public int MaxExecution                 = 0;        // Max allowed average execution time in ms (0 means no restrictions)
         [ExternVariable] public int MaxExecutionMinutes          = 5;        // How often in minutes should fake orders be sent to measure execution speed
         [ExternVariable] public double StopLoss                  = 60;       // StopLoss from as many points. Default 60 (= 6 pips)
         [ExternVariable] public double TakeProfit                = 100;      // TakeProfit from as many points. Default 100 (= 10 pip)

@@ -7,8 +7,8 @@
     <ProjectGuid>{20F477EA-EA42-4052-9B1E-4A19C6B7BF8E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XMT_Scalper</RootNamespace>
-    <AssemblyName>XMT Scalper</AssemblyName>
+    <RootNamespace>Robots</RootNamespace>
+    <AssemblyName>Robots.XMTScalper</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="XMTScalper-2.4.6.1.cs" />
+    <Compile Include="XMTScalper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="XMT Scalper home page.url" />
+    <None Include="XMTScalper.mq4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MqlApiWithStdLib\MqlApiWithStdLib.csproj">
@@ -61,7 +62,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "C:\Users\Abdallah Hacid\AppData\Roaming\MetaQuotes\Terminal\3BD2B5E5A5264AFE17C1E2DDC7D6B381\MQL4\Experts" /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "C:\Users\Abdallah Hacid\AppData\Roaming\MetaQuotes\Terminal\3BD2B5E5A5264AFE17C1E2DDC7D6B381\MQL4\Experts" /Y
+xcopy "$(ProjectDir)XMTScalper.mq4" "C:\Users\Abdallah Hacid\AppData\Roaming\MetaQuotes\Terminal\3BD2B5E5A5264AFE17C1E2DDC7D6B381\MQL4\Experts" /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

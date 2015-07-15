@@ -7,8 +7,8 @@
     <ProjectGuid>{2160B9CC-E46B-4361-93CA-4C8E9A3FF35F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MqlApiWithStdLib</RootNamespace>
-    <AssemblyName>MqlApiWithStdLib</AssemblyName>
+    <RootNamespace>NQuotes.Lib</RootNamespace>
+    <AssemblyName>NQuotes.MqlApiWithStdLib</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nquotes">
-      <HintPath>..\..\..\..\..\AppData\Roaming\MetaQuotes\Terminal\3BD2B5E5A5264AFE17C1E2DDC7D6B381\MQL4\Libraries\nquotes\nquotes.dll</HintPath>
+      <HintPath>..\..\..\..\AppData\Roaming\MetaQuotes\Terminal\3BD2B5E5A5264AFE17C1E2DDC7D6B381\MQL4\Libraries\nquotes\nquotes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
