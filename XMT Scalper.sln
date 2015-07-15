@@ -7,10 +7,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMT Scalper", "XMT Scalper\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B38C448C-6724-4DC0-84AA-859C71BD5582}"
 	ProjectSection(SolutionItems) = preProject
+		XMT Scalper\disclamer.txt = XMT Scalper\disclamer.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MqlApiWithStdLib", "MqlApiWithStdLib\MqlApiWithStdLib.csproj", "{2160B9CC-E46B-4361-93CA-4C8E9A3FF35F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Original files", "Original files", "{3736515D-695A-400B-A305-F9C5A70B90E9}"
+	ProjectSection(SolutionItems) = preProject
+		Original files\XMT Scalper v3.mq4 = Original files\XMT Scalper v3.mq4
+		Original files\XMT-Scalper.pdf = Original files\XMT-Scalper.pdf
+		Original files\XMT-Scalper_2.4.pdf = Original files\XMT-Scalper_2.4.pdf
+		Original files\XMT-Scalper_v2.4.2.mq4 = Original files\XMT-Scalper_v2.4.2.mq4
+		Original files\XMT-Scalper_v2.461.mq4 = Original files\XMT-Scalper_v2.461.mq4
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,5 +39,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3736515D-695A-400B-A305-F9C5A70B90E9} = {B38C448C-6724-4DC0-84AA-859C71BD5582}
 	EndGlobalSection
 EndGlobal

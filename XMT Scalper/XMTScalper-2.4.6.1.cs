@@ -1,10 +1,10 @@
-﻿    using System;
+﻿using NQuotes;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
-using NQuotes;
 
 namespace XMT_Scalper
 {
@@ -23,7 +23,7 @@ namespace XMT_Scalper
     /// </summary>
     /// 
 
-    public class XMTScalper : NQuotes.MqlApiWithStdLib
+    public class XMTScalper : MqlApiWithStdLib
     {
 
         //----------------------- Include files ------------------------------------------------------------
@@ -1946,4 +1946,6 @@ namespace XMT_Scalper
             ObjectsDeleteAll();
         }
     }
+
+
 }

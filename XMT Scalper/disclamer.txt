@@ -1,38 +1,217 @@
-             P L E A S E   -   D O    N O T    D E L E T E    A N Y T H I N G ! ! ! 
- -------------------------------------------------------------------------------------------------
-                                   XMT-Scalper v. 2.46
-
-                       				  	  by Capella
-                             http:www.worldwide-invest.org
-                                  Copyright 2011 - 2014
-
---------------------------------------------------------------------------------------------------
-   THIS EA IS SHAREWARE, WHICH MEANS THAT IT'S NOT A COMMERCIAL PRODUCT, BUT STILL COPYRIGHTED
- -------------------------------------------------------------------------------------------------
- 
- About Capella:
-
- I'm a professional system analyst / computer programmer + fund manager and fx trader living 
- in Sweden, with a background as a teacher in computer science, programming and mathematics, etc.
- I can be reached at the above financial forum. 
-
- Editing:
-
- Note: For readability in MetaEditor, set Tools > Options > General, Tab size = 3 spaces and 
- Font = Courier New 10. BTW, I use Notepad++ as the editor (highly recommended).
-
- Your suggestions:
-
- If you're a programmer and have suggestions for improvements, then please have the courtesy to 
- share this and upload the new mq4-file to the above forum. Add a letter "a", "b", etc. to the
- version number to distinguish it from the official releases. Be sure to comment every line of 
- code, and add your version comment at the end of the version list. Your contribution will be 
- honored. All further releases will be posted on the above forum, as well as all feedback from 
- users. All block code should have { and } in own lines without other code, this to enhance readability.
-
- Origin:
-
- The EA was originally based on the EA MillionDollarPips - but now totally rewritten from scratch.
- Not much remains from the original, except the core idea of the trading strategy.
-
---------------------------------------------------------------------------------------------------
+//             P L E A S E   -   D O    N O T    D E L E T E    A N Y T H I N G ! ! ! 
+        // -------------------------------------------------------------------------------------------------
+        //                                   XMT-Scalper v. 2.46
+        //
+        //                       				  	  by Capella
+        //                             http://www.worldwide-invest.org
+        //                                  Copyright 2011 - 2014
+        //
+        //--------------------------------------------------------------------------------------------------
+        //   THIS EA IS SHAREWARE, WHICH MEANS THAT IT'S NOT A COMMERCIAL PRODUCT, BUT STILL COPYRIGHTED
+        // -------------------------------------------------------------------------------------------------
+        // 
+        // About Capella:
+        //
+        // I'm a professional system analyst / computer programmer + fund manager and fx trader living 
+        // in Sweden, with a background as a teacher in computer science, programming and mathematics, etc.
+        // I can be reached at the above financial forum. 
+        //
+        // Editing:
+        //
+        // Note: For readability in MetaEditor, set Tools > Options > General, Tab size = 3 spaces and 
+        // Font = Courier New 10. BTW, I use Notepad++ as the editor (highly recommended).
+        //
+        // Your suggestions:
+        //
+        // If you're a programmer and have suggestions for improvements, then please have the courtesy to 
+        // share this and upload the new mq4-file to the above forum. Add a letter "a", "b", etc. to the
+        // version number to distinguish it from the official releases. Be sure to comment every line of 
+        // code, and add your version comment at the end of the version list. Your contribution will be 
+        // honored. All further releases will be posted on the above forum, as well as all feedback from 
+        // users. All block code should have { and } in own lines without other code, this to enhance readability.
+        //
+        // Origin:
+        //
+        // The EA was originally based on the EA MillionDollarPips - but now totally rewritten from scratch.
+        // Not much remains from the original, except the core idea of the trading strategy.
+        //
+        //--------------------------------------------------------------------------------------------------
+        //
+        // Version history:
+        //
+        // Someone at a russian forum fixed a Stack Overflow problem, added NDD-mode (ECN-mode) 
+        // and moved the DLL-functions in the mql4-code, and uploaded "MillionDollarPips - 
+        // (ANY PAIR + NO DLL) - ver 1.1.0".
+        //
+        // Sept-2011 by Capella by at http://www.worldwide-invest.org
+        // - Cleaned code from unused code, proper variable names and sub-names.
+        //
+        // Ver. 1.0 - 2011-09-24 by Capella at http://www.worldwide-invest.org
+        // - Added Print lines for STOPLEVEL when errors (for debugging purposes)
+        // - Removed unused externals and variables
+        // - Moved dynamic TP/SL and trading signals constants to externals, 
+        //   as VolatilityLimit and Scalpfactor.
+        // - Forced TrailingStop
+        //
+        // Ver. 2.0 - 2011-10-19  by Capella
+        // - Fixing bugs, and removed unused code.
+        // - Forced Trailing, as no-trailing cannot generate profit
+        // - Forced HighSpeed, as false mode cannot give good result
+        // - Added additional settings for scalping - UseMovingAverage, 
+        //   UseBollingerBands, and OrderExpireSeconds
+        // - Automatic adjusted to broker STOPLEVEL, to avoid OrderSend error 130
+        // Ver 2.1 - 2011-11-91 by Capella
+        // - Added Indicatorperiod as external
+        // - Modified calculation of variable that triggers trade (pricedirection)
+        // - Removed Distance as an external, and automatically adjust Distance to be the same as stoplevel 
+        // - Removed call for sub_moveandfillarrays as it doesn't make any difference
+        // Ver 2.1.1 - 2011-11-05 by Capella
+        // - Fixed a bug in the calculation of highest and lowest that caused wrong call for 
+        //   OrderModify.
+        // - Changed the calculation of STOPLEVEL to also consider FREEZELEVEL
+        // Ver 2.1.2 - 2011-11-06 by Capella
+        // - Changed default settings according to optimized backtests
+        // - Added external parameter Deviation for iBands, default 0
+        // Ver 2.1.3 - 2011-11-07 by Capella
+        // - Fixed a bug for calculation of isbidgreaterthanindy
+        // Ver 2.1.4 - 2011-11-09 by Capella
+        // - Fixed a bug that only made the robot trade on SELL and SELLSTOP
+        // - Put back the call for the sub "sub_moveandfillarrays" except the last nonsense part of it.
+        // - Changed the default settings and re-ordered the global variables
+        // Ver 2.1.5 - 2011-11-10 by Capella
+        // - Fixed a bug that caused the robot to not trade for some brokers (if variable "scalpsize" 
+        //   was 0.0) 
+        // - Fixed a bug that could cause the lot-size to be calculated wrongly
+        // - Better output of debug information (more information)
+        // - Moved a fixed internal Max Spread to an external. The default internal value was 40 (4 pips), 
+        //   which is too high IMHI 
+        // - Renamed some local variables to more proper names in order to make the code more readable
+        // - Cleaaned code further by removing unused code, etc.
+        // Ver 2.1.5a - 2011-11-15 by blueprint1972
+        // - Added Execution time in log files, to measure how fast orders are executed at the broker server
+        // Ver 2.2 - 2011-11-17 by Capella
+        // - An option to calculate VelocityLimit dynamically based on the spread 
+        // - Removed parameter Scalpfactor as it had no impact on the trading conditions, only on lotsize
+        // - Better lot calculation, now entirely based on FreeMargin, Risk and StopLoss
+        // - A new scalp factor called VolatilityPercentageLimit based on the difference between 
+        //   VolatilityLimit and iHigh / iLow for triggering trades
+        // - Can now trade automatically on all currency pairs within spread limit from one single chart 
+        // - Works on 4-digit brokers as well. Note: Performance on 4-digit brokers is worse than on 
+        //   5-digit brokers, and there are much less trades
+        // Ver 2.2.1 - 2011-11-18 by Capella
+        // - Fixed a bug for calculation of Commission. The variables "commissionpips" and 
+        //   "commissionfactor" moved from locals to globals.
+        // Ver 2.2.1.2 - 2011-11-18 by Sonik
+        // - Added Screenshot Functionality (Tested and Working So Far)
+        // Ver 2.2.2 - 2011-11-19 by Capella
+        // - Added automatic calculation of MagicNumber as an option
+        // - Adjust MinLot to broker minimum
+        // - Correction of lotsize calculation according to broker lotstep
+        // Ver 2.2.3 - 2011-11-21 by Capella
+        // - Fixed bug for calculation of lotsize calculation according to broker lotstep
+        // - Added broker Comission as an external parameter, and corected the calculation
+        // - Re-arrranged some code - moving parts to subroutines
+        // Ver 2.2.4 - 2011-11-23 by Capella
+        // - Improved performance for higher spreads 
+        // - Cleaned code further and moved parts of code to subroutines
+        // Ver 2.2.4a - 2011-11-24 by blueprint
+        // - Added execution control
+        // Ver 2.2.4b - 2011-11-24 by Pannik
+        // - Added possibility to use manual fixed lots
+        // Ver 2.2.5 - 2011-11-25 by Capella 
+        // - Fixed bug for too small lotsize and wrong Risk settings
+        // - Changed randomized execution time for backtests to be within 0 and MaxExecution
+        // - Cleaned the code further
+        // Ver 2.2.6 - 2011-11-25 by Capella
+        // - Fixed bug for too large lotsize. 
+        // - Fixed the bug for TradeALLCurrencyPairs
+        // - Moved broker suffix from external parameter to automatically calculated in a subroutine
+        // - Removed unnecessary program code, cleaned and organized the code further
+        // Ver 2.2.7 - 2011-11-30 by Capella
+        // - Fixed a bug for the broker Commission
+        // Ver 2.3 - 2011-12-08 by Capella
+        // - Changed name of the EA (from MDP-Plus) as the thread in the forum once again was deleted.
+        //   This EA is now a copyrighted shareware – a non-commercial product free to use.
+        // - Removed TradeALLCurrencyPairs as it was too buggy and could not cope with the fast trades, 
+        //   better attach on separate charts
+        // - Fixed bug where iMA was used instead of either/or iMA/iBands for modifying BUYSTOP and SELLSTOP 
+        //   orders
+        // - Rewrote some of the code to make it easier to follow and understand.
+        // - Rewrote subs to check lotsize and risk settings, and adjust them accordingly
+        // - Added more comments to program code
+        // - Added time for how often fake orders should be sent in order to calculate execution speed
+        // - Removed unused variables and code
+        // - Added check so no trading can start before we have gathered enough of Bar-data
+        // - Moved Slippage to an external parameter so it can be changed 
+        // - Added summation of broker error codes
+        // Ver 2.3.1 - 2011-12-08 by Capella
+        // - Fixed a bug that could cause lotsize to be greater than MaxLots
+        // Ver 2.3.2 - 2011-12-09 by blueprint1972
+        // - Added option for simulated latency during backtests
+        // Ver 2.3.2b - 2011-12-09 by derox
+        // - Added iEnvelopes and iATR as indicators
+        // Ver 2.3.2c - 2011-12-10 by Pannik
+        // - Added "UseIndicatorSwitch" for choosing indicator to use
+        // Ver 2.3.2d - 2011-12-12 by derox
+        // - Added AllAverages as indicator. Note: This requires external indicator
+        // Ver 2.3.3 - 2011-12-12 by Capella
+        // - Added AddPriceGap as an external parameter to increase SL and TP in order to decrease number of error 130
+        // - Replaced iMA with AllAverages
+        // - Removed iMA AND iBands combination
+        // - Fixed minor bugs
+        // - Cleaned up the code further
+        // Ver 2.3.4 - 2011-12-13 by Capella
+        // - Removed AllAverages as it didn't make any difference compared to standard Moving Average 
+        // - Fixed bug for iATR indicator. 
+        // - Added dual-trade as an option for iATR
+        // Ver 2.4 - 2012-09-06 by Capella
+        // - Removed some external settings incl. ATR and its settings
+        // - Added external setting MinumumUseStopLevel
+        // - Fixed bugs, so it works better with different brokers withhout error 130
+        // Ver 2.4.1 - 2012-10-23 by Capella
+        // - Added check for when ECN_Mode == TRUE and BUY/SELL orders have not yet been modified, to
+        //   prevent running orders without SL. Wait 1 second and then modify the order with a SL 
+        //   that is 3 pip from current price.
+        // - Changed default settings after extensive backtests using 99% tick-data
+        // Ver 2.4.2 - 2013-07 by Capella
+        // - Added lot-size re-calculation if Account Currency is not USD but either EUR, GBP, CHF or JPY
+        // - Added ReverseTrade as an option
+        // - Changed algorithm for automatically calculation of magicnumber
+        // - Added printout info if there was no errors reported from the broker server
+        // -------------------------------------------------------------------------------------------------
+        // Ver 2.4.3 - 2014-05 by Capella
+        // - Fixed bug - BBDeviation is INT not Double (wrong fix, see 2.461 below)
+        // - Moved IndicatorPeriod to externals
+        // - Minor bugs fixed
+        // - Compilation test on both MT4 Build 509 as well as on latest MT4 Build (currently 670)
+        // - Changed calculations from Balance to Equity (2014-08-05)
+        // --------------------------------------------------------------------------------------------------
+        // Ver 2.44 - 2014-08/09 by Capella
+        // - Changed version presentation to only one point ( . ), i.e. 2.4.4. becomes 2.44
+        // - Added control of stray trades (trades without SL and TP). 
+        //   If it finds a stray order it will try to add a SL 10 points from current price.
+        // - Changed how MinimumUseStopLevel is calculated and used. Now the StopLevel is the highest value of  
+        //   either this value or the Broker StopLevel. This StopLevel is then added/substracted from the current
+        //   price for BuyStop and SellStop orders. The value expressed in Points.
+        // - Added spaces around ( and ) and after commas , to enhance readability
+        // - Added AUD and NZD as possible account currencies for calculation of multiplicator (used to correct lotsize),
+        //   and moved it to a subroutine.
+        //---------------------------------------------------------------------------------------------------
+        // Ver 2.45 - 2014-09-30 by Capella
+        // - Fixed a bug for OrderExpireSeconds
+        //---------------------------------------------------------------------------------------------------
+        // Ver 2.451 - 2014-11-14 by Capella
+        // - Fixed a bug for printout of BBands in Debug mode
+        //--------------------------------------------------------------------------------------------------- 
+        // Ver 2.452 - 2014-11-15 by Capella
+        // - Fixed a bug for Magic (did not return a calculated value)
+        //---------------------------------------------------------------------------------------------------
+        // Ver 2.46 - 2014-11-24 by Capella
+        // - Added the setting MinMarginLevel. No trading is allowed if free margin is below this percentage.
+        // - Added graphic trading presentation
+        // - Renamed variables names (globals starting with upper case, locals in lower case)
+        // - Adding spaced within parenthesis ( ... ) to enhance readability
+        //---------------------------------------------------------------------------------------------------
+        // Ver 2.461 - 2015-01-09 by Capella
+        // - Fixed bug for BBDeviation, which is a double and not int
+        //---------------------------------------------------------------------------------------------------
