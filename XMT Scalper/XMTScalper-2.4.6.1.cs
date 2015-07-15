@@ -25,18 +25,11 @@ namespace XMT_Scalper
 
     public class XMTScalper : MqlApiWithStdLib
     {
+        #region Robot Parameters
 
-        //----------------------- Include files ------------------------------------------------------------
-
-        // Note: If the below files are stored in the installation directory of MT4 then the files should be
-        // written with " " around their names. If you however prefer to have the include files in the same 
-        // directory as this EA, then the files below shoul be surropunded by < > instead.
-        //# include "stdlib.mqh"        // "stdlib.mqh" or "<sdlib.mqh> 
-        //# include "stderror.mqh"      // "stderror.mqh" or <stderror.mqh>
-
-        //----------------------- External Globals ----------------------------------------------------------------
-        // All globals should here have their name starting with a CAPITAL character
-
+        /// <summary>
+        /// All globals should here have their name starting with a CAPITAL character
+        /// </summary>
         [ExternVariable] public string Configuration             = "==== Configuration ====";
         [ExternVariable] public bool ReverseTrade                = false;    // If true, then trade in opposite direction
         [ExternVariable] public int Magic                        = -1;       // If set to a number less than 0 it will calculate MagicNumber automatically
@@ -93,10 +86,12 @@ namespace XMT_Scalper
         [ExternVariable] public Color Color_Section2             = Color.Aqua;              // -"-
         [ExternVariable] public Color Color_Section3             = Color.Orange;            // -"-
         [ExternVariable] public Color Color_Section4             = Color.Magenta;         // -"-
+        #endregion
 
-        //--------------------------- Globals --------------------------------------------------------------
-        // All globals should here have their name starting with a CAPITAL character
-
+        #region Globals variables
+        /// <summary>
+        /// All globals should here have their name starting with a CAPITAL character
+        /// </summary>
         string EA_version = "XMT-Scalper v. 2.46";
 
         int BrokerDigits                        = 0;    // Nnumber of digits that the broker uses for this currency pair
@@ -165,7 +160,7 @@ namespace XMT_Scalper
         int _doShot = -1;
         double _oldTimePhase = 3000000;
         static int indexOfScreenShot = 0;
-
+        #endregion
 
         /// <summary>
         /// Program initialization
