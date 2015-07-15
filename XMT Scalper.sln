@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B38C448C-6724-4DC0-84AA-859C71BD5582}"
 	ProjectSection(SolutionItems) = preProject
 		XMT Scalper\disclamer.txt = XMT Scalper\disclamer.txt
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
