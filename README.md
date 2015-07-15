@@ -11,13 +11,13 @@ Cet EA n'est pas un produit commercial, mais est disponible gratuitement.
 # Objectifs
 
 Le Projet initial  d'un robot de trading scalper XMT-Scalper v2.4.6.1 écrit en MQL4 provient de [Capella](http://www.worldwide-invest.org). 
-Il à été traduit en CSharp avec l'aide de la librairie [NQuotes](http://www.nquotes.net/) de [Daniel](support2@nquotes.net ).
+Il à été traduit en CSharp par [Abdallah Hacid](ab.hacid@gmail.com) avec l'aide de la librairie [NQuotes](http://www.nquotes.net/) de [Daniel](support2@nquotes.net ).
 A partir de là nous nous proposons de restructurer le code pour le rendre plus modulaire et ainsi plus lisible puis ensuite le faire évoluer plus 
 simplement.
 
 # Avantages
 Un avantage indéniable du système NQuotes est que l'on peut écrire les indicateurs et robots de trading en CSharp et les éxécuter directemet
-sur la plateforme MetaTrader 4, on peut également faire ud débogage ou piloter le robot depuis une interface Windows Form ou WPF. 
+sur la plateforme MetaTrader 4, on peut également faire un débogage ou piloter le robot depuis une interface Windows Form ou WPF. 
 
 # Installation
 
@@ -36,7 +36,7 @@ Pour compiler le programme avec Visual Studio, il faut au préalable :
   
   b) votre nom d'utilisateur windows.
 
- #Débogage avec NQuotes
+ # Débogage avec NQuotes
 
   Pour déboguer le programme avec NQuotes suivez les [instructions](http://www.nquotes.net/expert-creation-tutorial) donnez par son auteur [Daniel](support2@nquotes.net ).
 
