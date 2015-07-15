@@ -35,8 +35,7 @@ Pour compiler le programme avec Visual Studio, il faut au préalable :
   C:\Users\{user}\AppData\Roaming\MetaQuotes\Terminal\. 
   
   b) votre nom d'utilisateur windows.
-
- # Débogage avec NQuotes
+# Débogage avec NQuotes
 
   Pour déboguer le programme avec NQuotes suivez les [instructions](http://www.nquotes.net/expert-creation-tutorial) donnez par son auteur [Daniel](support2@nquotes.net ).
 
