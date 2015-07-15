@@ -1,0 +1,38 @@
+             P L E A S E   -   D O    N O T    D E L E T E    A N Y T H I N G ! ! ! 
+ -------------------------------------------------------------------------------------------------
+                                   XMT-Scalper v. 2.46
+
+                       				  	  by Capella
+                             http:www.worldwide-invest.org
+                                  Copyright 2011 - 2014
+
+--------------------------------------------------------------------------------------------------
+   THIS EA IS SHAREWARE, WHICH MEANS THAT IT'S NOT A COMMERCIAL PRODUCT, BUT STILL COPYRIGHTED
+ -------------------------------------------------------------------------------------------------
+ 
+ About Capella:
+
+ I'm a professional system analyst / computer programmer + fund manager and fx trader living 
+ in Sweden, with a background as a teacher in computer science, programming and mathematics, etc.
+ I can be reached at the above financial forum. 
+
+ Editing:
+
+ Note: For readability in MetaEditor, set Tools > Options > General, Tab size = 3 spaces and 
+ Font = Courier New 10. BTW, I use Notepad++ as the editor (highly recommended).
+
+ Your suggestions:
+
+ If you're a programmer and have suggestions for improvements, then please have the courtesy to 
+ share this and upload the new mq4-file to the above forum. Add a letter "a", "b", etc. to the
+ version number to distinguish it from the official releases. Be sure to comment every line of 
+ code, and add your version comment at the end of the version list. Your contribution will be 
+ honored. All further releases will be posted on the above forum, as well as all feedback from 
+ users. All block code should have { and } in own lines without other code, this to enhance readability.
+
+ Origin:
+
+ The EA was originally based on the EA MillionDollarPips - but now totally rewritten from scratch.
+ Not much remains from the original, except the core idea of the trading strategy.
+
+--------------------------------------------------------------------------------------------------

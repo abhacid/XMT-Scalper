@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{20F477EA-EA42-4052-9B1E-4A19C6B7BF8E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XMT_Scalper</RootNamespace>
+    <AssemblyName>XMT Scalper</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nquotes">
+      <HintPath>..\..\..\..\AppData\Roaming\MetaQuotes\Terminal\3BD2B5E5A5264AFE17C1E2DDC7D6B381\MQL4\Libraries\nquotes\nquotes.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="XMTScalper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="disclamer.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fichiers originaux\XMT Scalper v3.mq4" />
+    <None Include="Fichiers originaux\XMT-Scalper.pdf" />
+    <None Include="Fichiers originaux\XMT-Scalper_2.4.pdf" />
+    <None Include="Fichiers originaux\XMT-Scalper_v2.4.2.mq4" />
+    <None Include="Fichiers originaux\XMT-Scalper_v2.461.mq4" />
+    <None Include="Original files\XMT Scalper v3.mq4" />
+    <None Include="Original files\XMT-Scalper.pdf" />
+    <None Include="Original files\XMT-Scalper_2.4.pdf" />
+    <None Include="Original files\XMT-Scalper_v2.4.2.mq4" />
+    <None Include="Original files\XMT-Scalper_v2.461.mq4" />
+    <None Include="XMT Scalper home page.url" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MqlApiWithStdLib.MQ4\MqlApiWithStdLib.csproj">
+      <Project>{2160b9cc-e46b-4361-93ca-4c8e9a3ff35f}</Project>
+      <Name>MqlApiWithStdLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "C:\Users\Abdallah Hacid\AppData\Roaming\MetaQuotes\Terminal\3BD2B5E5A5264AFE17C1E2DDC7D6B381\MQL4\Experts" /Y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
