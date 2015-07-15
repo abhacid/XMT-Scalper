@@ -61,6 +61,7 @@
     <None Include="Original files\XMT-Scalper_2.4.pdf" />
     <None Include="Original files\XMT-Scalper_v2.4.2.mq4" />
     <None Include="Original files\XMT-Scalper_v2.461.mq4" />
+    <None Include="README.md" />
     <None Include="XMT Scalper home page.url" />
   </ItemGroup>
   <ItemGroup>

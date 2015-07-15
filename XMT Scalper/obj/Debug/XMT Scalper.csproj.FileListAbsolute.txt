@@ -8,3 +8,12 @@ C:\Users\Abdallah Hacid\Source\Repos\XMT Scalper\XMT Scalper\bin\Debug\MqlApiWit
 C:\Users\Abdallah Hacid\Source\Repos\XMT Scalper\XMT Scalper\bin\Debug\nquotes.xml
 C:\Users\Abdallah Hacid\Source\Repos\XMT Scalper\XMT Scalper\obj\Debug\XMT Scalper.dll
 C:\Users\Abdallah Hacid\Source\Repos\XMT Scalper\XMT Scalper\obj\Debug\XMT Scalper.pdb
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\XMT Scalper\bin\Debug\XMT Scalper.dll
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\XMT Scalper\bin\Debug\XMT Scalper.pdb
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\XMT Scalper\bin\Debug\MqlApiWithStdLib.dll
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\XMT Scalper\bin\Debug\nquotes.dll
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\XMT Scalper\bin\Debug\MqlApiWithStdLib.pdb
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\XMT Scalper\bin\Debug\nquotes.xml
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\XMT Scalper\obj\Debug\XMT Scalper.csprojResolveAssemblyReference.cache
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\XMT Scalper\obj\Debug\XMT Scalper.dll
+C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\XMT Scalper\obj\Debug\XMT Scalper.pdb
