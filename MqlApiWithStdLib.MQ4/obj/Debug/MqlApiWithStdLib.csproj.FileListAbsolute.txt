@@ -4,6 +4,5 @@ C:\Users\Abdallah Hacid\Source\Repos\XMT Scalper\MqlApiWithStdLib.MQ4\obj\Debug\
 C:\Users\Abdallah Hacid\Source\Repos\XMT Scalper\MqlApiWithStdLib.MQ4\obj\Debug\MqlApiWithStdLib.pdb
 C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib.MQ4\bin\Debug\MqlApiWithStdLib.dll
 C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib.MQ4\bin\Debug\MqlApiWithStdLib.pdb
-C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib.MQ4\obj\Debug\MqlApiWithStdLib.csprojResolveAssemblyReference.cache
 C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib.MQ4\obj\Debug\MqlApiWithStdLib.dll
 C:\Users\Abdallah Hacid\Source\Repos\XMT-Scalper\MqlApiWithStdLib.MQ4\obj\Debug\MqlApiWithStdLib.pdb
