@@ -51,6 +51,8 @@ namespace Robots
     /// on dotnet framework and Visual studio infrastructure.
     /// 
     /// Project Hosting for Open Source Software on Github : https://github.com/abhacid/XMT-Scalper
+    /// 
+    /// 
     /// </summary>
     #endregion 
 
@@ -71,7 +73,7 @@ namespace Robots
         [ExternVariable] public bool Verbose                     = false;    // Additional information printed in the chart
 
         [ExternVariable] public string TradingSettings           = "==== Trade settings ====";
-        [ExternVariable] public double MaxSpread                 = 30.0;     // Max allowed spread in points (1 / 10 pip)
+        [ExternVariable] public double MaxSpread                 = 10.0;     // Max allowed spread in points (1 / 10 pip)
         [ExternVariable] public int MaxExecution                 = 0;        // Max allowed average execution time in ms (0 means no restrictions)
         [ExternVariable] public int MaxExecutionMinutes          = 5;        // How often in minutes should fake orders be sent to measure execution speed
         [ExternVariable] public double StopLoss                  = 60;       // StopLoss from as many points. Default 60 (= 6 pips)
@@ -112,11 +114,11 @@ namespace Robots
         [ExternVariable] public string DisplayGraphics           = "=== Display Graphics ==="; // Colors for Display at upper left
         [ExternVariable] public int Heading_Size                 = 13;       // Font size for headline
         [ExternVariable] public int Text_Size                    = 12;       // Font size for texts
-        [ExternVariable] public Color Color_Heading              = Color.Lime;   // Color for text lines
-        [ExternVariable] public Color Color_Section1             = Color.Yellow;            // -"-
-        [ExternVariable] public Color Color_Section2             = Color.Aqua;              // -"-
-        [ExternVariable] public Color Color_Section3             = Color.Orange;            // -"-
-        [ExternVariable] public Color Color_Section4             = Color.Magenta;         // -"-
+        [ExternVariable] public Color Color_Heading              = Color.Black;   // Color for text lines
+        [ExternVariable] public Color Color_Section1             = Color.DarkSlateGray;            // -"-
+        [ExternVariable] public Color Color_Section2             = Color.DimGray;              // -"-
+        [ExternVariable] public Color Color_Section3             = Color.MidnightBlue;            // -"-
+        [ExternVariable] public Color Color_Section4             = Color.SeaGreen;         // -"-
         #endregion
 
         #region Globals variables
