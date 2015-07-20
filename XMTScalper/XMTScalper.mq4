@@ -1,3 +1,5 @@
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/Metatrader-Ecosystem
+
 
 #property copyright "(c) 2011 - 2014 Capella"
 #property link "http://www.worldwide-invest.org"
@@ -86,7 +88,7 @@
 
 int init()
 {
-	nquotes_setup("Robots.XMTScalper", "Robots.XMTScalper");
+	nquotes_setup("Metatrader.Robots.XMTScalper", "Metatrader.Robots");
 
 	nquotes_set_property_bool("ReverseTrade", ReverseTrade);
 	nquotes_set_property_int("Magic", Magic);

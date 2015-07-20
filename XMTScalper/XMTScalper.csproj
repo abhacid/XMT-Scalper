@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2160B9CC-E46B-4361-93CA-4C8E9A3FF35F}</ProjectGuid>
+    <ProjectGuid>{20F477EA-EA42-4052-9B1E-4A19C6B7BF8E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NQuotes.Lib</RootNamespace>
-    <AssemblyName>NQuotes.MqlApiWithStdLib</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Metatrader.Robots</RootNamespace>
+    <AssemblyName>Metatrader.Robots.XMTScalper</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,7 +28,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nquotes">
@@ -39,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,12 +44,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MqlApiWithStdLib.cs" />
+    <Compile Include="XMTScalper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="disclamer.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="XMT Scalper home page.url" />
+    <None Include="XMTScalper.mq4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Metatrader-Ecosystem\Library\TradingLib\TradingLib.csproj">
+      <Project>{f35c5634-5c66-4fc6-9f75-6a85c1bd2ba1}</Project>
+      <Name>TradingLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "C:\Users\Abdallah Hacid\AppData\Roaming\MetaQuotes\Terminal\3BD2B5E5A5264AFE17C1E2DDC7D6B381\MQL4\Experts" /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)$(TargetFileName)" "%25TERMINAL_DATA_PATH%25\%25Metatrader_Instance_Id%25\MQL4\Libraries\nquotes\asssembly" /Y
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>"%25Metatrader_PATH%25\mql.exe" "$(ProjectDir)$(MSBuildProjectName).mq4"
+xcopy "$(ProjectDir)$(MSBuildProjectName).mq4" "%25TERMINAL_DATA_PATH%25\%25Metatrader_Instance_Id%25\MQL4\Experts\Ecosystem" /Y
+xcopy "$(ProjectDir)$(MSBuildProjectName).ex4" "%25TERMINAL_DATA_PATH%25\%25Metatrader_Instance_Id%25\MQL4\Experts\Ecosystem"  /Y</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

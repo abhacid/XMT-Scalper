@@ -28,15 +28,12 @@
 #endregion
 
 using NQuotes;
+using Metatrader.Lib;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
-namespace Robots
+namespace Metatrader.Robots
 {
     #region Initial Author
     /// <summary>
@@ -56,69 +53,69 @@ namespace Robots
     /// </summary>
     #endregion 
 
-    public class XMTScalper : MqlApiWithStdLib
+    public class XMTScalper : MqlApiLib
     {
         #region Robot Parameters
 
         /// <summary>
         /// All globals should here have their name starting with a CAPITAL character
         /// </summary>
-        [ExternVariable] public string Configuration             = "==== Configuration ====";
-        [ExternVariable] public bool ReverseTrade                = false;    // If true, then trade in opposite direction
-        [ExternVariable] public int Magic                        = -1;       // If set to a number less than 0 it will calculate MagicNumber automatically
+        [ExternVariable] string Configuration             = "==== Configuration ====";
+        [ExternVariable] bool ReverseTrade                = false;    // If true, then trade in opposite direction
+        [ExternVariable] int Magic                        = -1;       // If set to a number less than 0 it will calculate MagicNumber automatically
 
-        [ExternVariable] public string OrderCmt                  = "XMT-Scalper 2.46"; // Trade comments that appears in the Trade and Account History tab
-        [ExternVariable] public bool ECN_Mode                    = false;    // True for brokers that don't accept SL and TP to be sent at the same time as the order
-        [ExternVariable] public bool Debug                       = false;    // Print huge log files with info, only for debugging purposes
-        [ExternVariable] public bool Verbose                     = false;    // Additional information printed in the chart
+        [ExternVariable] string OrderCmt                  = "XMT-Scalper 2.46"; // Trade comments that appears in the Trade and Account History tab
+        [ExternVariable] bool ECN_Mode                    = true;    // True for brokers that don't accept SL and TP to be sent at the same time as the order
+        [ExternVariable] bool Debug                       = false;    // Print huge log files with info, only for debugging purposes
+        [ExternVariable] bool Verbose                     = false;    // Additional information printed in the chart
 
-        [ExternVariable] public string TradingSettings           = "==== Trade settings ====";
-        [ExternVariable] public double MaxSpread                 = 10.0;     // Max allowed spread in points (1 / 10 pip)
-        [ExternVariable] public int MaxExecution                 = 0;        // Max allowed average execution time in ms (0 means no restrictions)
-        [ExternVariable] public int MaxExecutionMinutes          = 5;        // How often in minutes should fake orders be sent to measure execution speed
-        [ExternVariable] public double StopLoss                  = 60;       // StopLoss from as many points. Default 60 (= 6 pips)
-        [ExternVariable] public double TakeProfit                = 100;      // TakeProfit from as many points. Default 100 (= 10 pip)
-        [ExternVariable] public double AddPriceGap               = 0;        // Additional price gap in points added to SL and TP in order to avoid Error 130
-        [ExternVariable] public double TrailingStart             = 20;       // Start trailing profit from as so many points. 
-        [ExternVariable] public double Commission                = 0;        // Some broker accounts charge commission in USD per 1.0 lot. Commission in dollar
-        [ExternVariable] public int Slippage                     = 3;        // Maximum allowed Slippage in points
-        [ExternVariable] public double MinimumUseStopLevel       = 0;        // Minimum stop level. Stoplevel to use will be max value of either this value or broker stoplevel 
+        [ExternVariable] string TradingSettings           = "==== Trade settings ====";
+        [ExternVariable] double MaxSpread                 = 10.0;     // Max allowed spread in points (1 / 10 pip)
+        [ExternVariable] int MaxExecution                 = 0;        // Max allowed average execution time in ms (0 means no restrictions)
+        [ExternVariable] int MaxExecutionMinutes          = 5;        // How often in minutes should fake orders be sent to measure execution speed
+        [ExternVariable] double StopLoss                  = 60;       // StopLoss from as many points. Default 60 (= 6 pips)
+        [ExternVariable] double TakeProfit                = 100;      // TakeProfit from as many points. Default 100 (= 10 pip)
+        [ExternVariable] double AddPriceGap               = 0;        // Additional price gap in points added to SL and TP in order to avoid Error 130
+        [ExternVariable] double TrailingStart             = 20;       // Start trailing profit from as so many points. 
+        [ExternVariable] double Commission                = 0;        // Some broker accounts charge commission in USD per 1.0 lot. Commission in dollar
+        [ExternVariable] int Slippage                     = 3;        // Maximum allowed Slippage in points
+        [ExternVariable] double MinimumUseStopLevel       = 0;        // Minimum stop level. Stoplevel to use will be max value of either this value or broker stoplevel 
 
-        [ExternVariable] public string VolatilitySettings        = "==== Volatility Settings ====";
-        [ExternVariable] public bool UseDynamicVolatilityLimit   = true;     // Calculate VolatilityLimit based on INT (spread * VolatilityMultiplier)
-        [ExternVariable] public double VolatilityMultiplier      = 125;      // Dynamic value, only used if UseDynamicVolatilityLimit is set to true
-        [ExternVariable] public double VolatilityLimit           = 180;      // Fix value, only used if UseDynamicVolatilityLimit is set to false
-        [ExternVariable] public bool UseVolatilityPercentage     = true;     // If true, then price must break out more than a specific percentage
-        [ExternVariable] public double VolatilityPercentageLimit = 0;        // Percentage of how much iHigh-iLow difference must differ from VolatilityLimit. 0 is risky, 60 means a safe value
+        [ExternVariable] string VolatilitySettings        = "==== Volatility Settings ====";
+        [ExternVariable] bool UseDynamicVolatilityLimit   = true;     // Calculate VolatilityLimit based on INT (spread * VolatilityMultiplier)
+        [ExternVariable] double VolatilityMultiplier      = 125;      // Dynamic value, only used if UseDynamicVolatilityLimit is set to true
+        [ExternVariable] double VolatilityLimit           = 180;      // Fix value, only used if UseDynamicVolatilityLimit is set to false
+        [ExternVariable] bool UseVolatilityPercentage     = true;     // If true, then price must break out more than a specific percentage
+        [ExternVariable] double VolatilityPercentageLimit = 0;        // Percentage of how much iHigh-iLow difference must differ from VolatilityLimit. 0 is risky, 60 means a safe value
 
-        [ExternVariable] public string UseIndicatorSet           = "=== Indicators: 1 = Moving Average, 2 = BollingerBand, 3 = Envelopes";
-        [ExternVariable] public int _UseIndicatorSwitch          = 1;        // Switch User indicators. 
-        [ExternVariable] public int Indicatorperiod              = 3;        // Period in bars for indicators
-        [ExternVariable] public double _BBDeviation              = 2.0;      // Deviation for the iBands indicator
-        [ExternVariable] public double EnvelopesDeviation        = 0.07;     // Deviation for the iEnvelopes indicator
-        [ExternVariable] public int OrderExpireSeconds           = 3600;     // Orders are deleted after so many seconds
+        [ExternVariable] string UseIndicatorSet           = "=== Indicators: 1 = Moving Average, 2 = BollingerBand, 3 = Envelopes";
+        [ExternVariable] int _UseIndicatorSwitch          = 1;        // Switch User indicators. 
+        [ExternVariable] int Indicatorperiod              = 3;        // Period in bars for indicators
+        [ExternVariable] double _BBDeviation              = 2.0;      // Deviation for the iBands indicator
+        [ExternVariable] double EnvelopesDeviation        = 0.07;     // Deviation for the iEnvelopes indicator
+        [ExternVariable] int OrderExpireSeconds           = 3600;     // Orders are deleted after so many seconds
 
-        [ExternVariable] public string Money_Management          = "==== Money Management ====";
-        [ExternVariable] public bool MoneyManagement             = true;     // If true then calculate lotsize automaticallay based on Risk, if False then use ManualLotsize below
-        [ExternVariable] public double MinLots                   = 0.01;     // Minimum lot-size to trade with
-        [ExternVariable] public double MaxLots                   = 100.0;    // Maximum allowed lot-size to trade with
-        [ExternVariable] public double Risk                      = 2.0;      // Risk setting in percentage, For 10.000 in Equity 10% Risk and 60 StopLoss lotsize = 16.66
-        [ExternVariable] public double ManualLotsize             = 0.1;      // Manual lotsize to trade with if MoneyManagement above is set to false
-        [ExternVariable] public double MinMarginLevel            = 100;      // Lowest allowed Margin level for new positions to be opened. 
+        [ExternVariable] string Money_Management          = "==== Money Management ====";
+        [ExternVariable] bool MoneyManagement             = true;     // If true then calculate lotsize automaticallay based on Risk, if False then use ManualLotsize below
+        [ExternVariable] double MinLots                   = 0.01;     // Minimum lot-size to trade with
+        [ExternVariable] double MaxLots                   = 100.0;    // Maximum allowed lot-size to trade with
+        [ExternVariable] double Risk                      = 2.0;      // Risk setting in percentage, For 10.000 in Equity 10% Risk and 60 StopLoss lotsize = 16.66
+        [ExternVariable] double ManualLotsize             = 0.1;      // Manual lotsize to trade with if MoneyManagement above is set to false
+        [ExternVariable] double MinMarginLevel            = 100;      // Lowest allowed Margin level for new positions to be opened. 
 
-        [ExternVariable] public string Screen_Shooter            = "==== Screen Shooter ====";
-        [ExternVariable] public bool TakeShots                   = false;    // Save screen shots on STOP orders?
-        [ExternVariable] public int DelayTicks                   = 1;        // Delay so many ticks after new bar
-        [ExternVariable] public int ShotsPerBar                  = 1;        // How many screen shots per bar
+        [ExternVariable] string Screen_Shooter            = "==== Screen Shooter ====";
+        [ExternVariable] bool TakeShots                   = false;    // Save screen shots on STOP orders?
+        [ExternVariable] int DelayTicks                   = 1;        // Delay so many ticks after new bar
+        [ExternVariable] int ShotsPerBar                  = 1;        // How many screen shots per bar
 
-        [ExternVariable] public string DisplayGraphics           = "=== Display Graphics ==="; // Colors for Display at upper left
-        [ExternVariable] public int Heading_Size                 = 13;       // Font size for headline
-        [ExternVariable] public int Text_Size                    = 12;       // Font size for texts
-        [ExternVariable] public Color Color_Heading              = Color.Black;   // Color for text lines
-        [ExternVariable] public Color Color_Section1             = Color.DarkSlateGray;            // -"-
-        [ExternVariable] public Color Color_Section2             = Color.DimGray;              // -"-
-        [ExternVariable] public Color Color_Section3             = Color.MidnightBlue;            // -"-
-        [ExternVariable] public Color Color_Section4             = Color.SeaGreen;         // -"-
+        [ExternVariable] string DisplayGraphics           = "=== Display Graphics ==="; // Colors for Display at upper left
+        [ExternVariable] int Heading_Size                 = 13;       // Font size for headline
+        [ExternVariable] int Text_Size                    = 12;       // Font size for texts
+        [ExternVariable] Color Color_Heading              = Color.Black;   // Color for text lines
+        [ExternVariable] Color Color_Section1             = Color.DarkSlateGray;            // -"-
+        [ExternVariable] Color Color_Section2             = Color.DimGray;              // -"-
+        [ExternVariable] Color Color_Section3             = Color.MidnightBlue;            // -"-
+        [ExternVariable] Color Color_Section4             = Color.SeaGreen;         // -"-
         #endregion
 
         #region Globals variables
@@ -1973,7 +1970,10 @@ namespace Robots
         {
             ObjectsDeleteAll();
         }
+
+       
+
     }
-
-
 }
+
+

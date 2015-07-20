@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("XMT Scalper")]
+[assembly: AssemblyTitle("XMTScalper")]
 [assembly: AssemblyDescription("This is a FREE Shareware Expert Advisor for MetaTrader 4. Please do not remove the property section and version history. XMT-Scalper is a Tick Scalper for EURUSD M1, but can also work on other pairs, Gold and CFD's It's extremely broker sensitive and requires tight spread. Read the PDF-file for explanations and settings.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("http://www.worldwide-invest.org")]
-[assembly: AssemblyProduct("XMT Scalper")]
+[assembly: AssemblyProduct("XMTScalper")]
 [assembly: AssemblyCopyright("Copyright 2011-2014 by Capella at http://www.worldwide-invest.org")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.4.6.1")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("2.4.6.1")]
